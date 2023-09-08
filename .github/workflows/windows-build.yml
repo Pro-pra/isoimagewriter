@@ -15,17 +15,18 @@ jobs:
 
       - name: Install Qt
         uses: jurplel/install-qt-action@v3
-        timeout-minutes: 10
-        version: [5.15.2]
-        target: desktop
-        host: windows
-        arch: win64_msvc2019_64
-        install-deps: true
+        with:
+          timeout-minutes: '10'
+          version: '5.15.2'
+          target: 'desktop'
+          host: 'windows'
+          arch: 'win64_msvc2019_64'
+          install-deps: 'true'
 
       - name: Setup MSVC environment
         uses: seanmiddleditch/gha-setup-vsdevenv@v3
         with:
-          arch: x64
+          arch: 'x64'
 
       - name: Configure Release
         run: |
