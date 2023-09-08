@@ -8,12 +8,6 @@ env:
 
 jobs:
   build:
-    strategy:
-      matrix:
-        qt:
-          version: [5.15.2]
-
-
     runs-on: windows-latest
     steps:
       - name: Check out repository
