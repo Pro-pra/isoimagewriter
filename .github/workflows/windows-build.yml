@@ -16,24 +16,26 @@ jobs:
 
     runs-on: windows-latest
     steps:
-	- uses: actions/checkout@v3
-	- name: Install Qt
-    	    uses: jurplel/install-qt-action@v2.13.0
-    	    timeout-minutes: 10
-    	    version: 5.15.2
-            target: desktop
-            host: windows
-            arch: win64_msvc2019_64
-            nstall-deps: true
-        - name: Setup MSVC environment
-            with:
-              arch: x64
-        - name: Configure Release
-          run: |
-          mkdir -p build
-          cd build
-          cmake -DROSA_BRANDING=ON ../
-	- name: Build
+      - name: Check out repository
+        uses: actions/checkout@v3
+      - name: Install Qt
+        uses: jurplel/install-qt-action@v2.13.0
+        timeout-minutes: 10
+        version: 5.15.2
+        target: desktop
+        host: windows
+        arch: win64_msvc2019_64
+        nstall-deps: true
+      - name: Setup MSVC environment
+        with:
+          arch: x64
+      - name: Configure Release
+        run: |
+        mkdir -p build
+        cd build
+        cmake -DROSA_BRANDING=ON ../
+      
+      - name: Build
     	  run: |
             cd build
             make
