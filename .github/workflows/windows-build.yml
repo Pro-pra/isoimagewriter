@@ -8,38 +8,29 @@ env:
 
 jobs:
   build:
-    runs-on: ${{ matrix.env.os }}
     strategy:
       matrix:
         qt:
           version: [5.15.2]
 
 
-    runs-on: ${{ matrix.env.os }}
+    runs-on: windows-latest
     steps:
-    	env:
-	  - name: win64
-            os: windows-latest
-            qt_platform: windows
-            qt_arch: win64_msvc2019_64
-            msvc_arch: x64
-            pack: 1
-
 	- name: Checkout repository
 	  uses: actions/checkout@v3
 
 	- name: Install Qt
     	    uses: jurplel/install-qt-action@v2.13.0
     	    timeout-minutes: 10
-    	    version: ${{ matrix.qt.version }}
+    	    version: 5.15.2
             target: desktop
-            host: ${{ matrix.env.qt_platform }}
-            arch: ${{ matrix.env.qt_arch }}
+            host: windows
+            arch: win64_msvc2019_64
             nstall-deps: true
         
         - name: Setup MSVC environment
             with:
-              arch: ${{ matrix.env.msvc_arch }}
+              arch: x64
         
         - name: Configure Release
           run: |
