@@ -14,16 +14,17 @@ jobs:
         qt:
           version: [5.15.2]
 
-	env:
+
+    runs-on: ${{ matrix.env.os }}
+    steps:
+    	env:
 	  - name: win64
             os: windows-latest
-            ninja_platform: win
             qt_platform: windows
             qt_arch: win64_msvc2019_64
             msvc_arch: x64
             pack: 1
 
-    steps:
 	- name: Checkout repository
 	  uses: actions/checkout@v3
 
