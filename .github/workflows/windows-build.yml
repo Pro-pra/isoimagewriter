@@ -16,9 +16,7 @@ jobs:
 
     runs-on: windows-latest
     steps:
-	- name: Checkout repository
-	  uses: actions/checkout@v3
-
+	- uses: actions/checkout@v3
 	- name: Install Qt
     	    uses: jurplel/install-qt-action@v2.13.0
     	    timeout-minutes: 10
@@ -27,17 +25,14 @@ jobs:
             host: windows
             arch: win64_msvc2019_64
             nstall-deps: true
-        
         - name: Setup MSVC environment
             with:
               arch: x64
-        
         - name: Configure Release
           run: |
           mkdir -p build
           cd build
           cmake -DROSA_BRANDING=ON ../
-
 	- name: Build
     	  run: |
             cd build
