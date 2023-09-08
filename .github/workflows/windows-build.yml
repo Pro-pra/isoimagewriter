@@ -10,10 +10,9 @@ jobs:
   build:
     runs-on: ${{ matrix.env.os }}
     strategy:
-      fail-fast: false
       matrix:
         qt:
-          version: 5.15.2
+          version: [5.15.2]
 
 	env:
 	  - name: win64
