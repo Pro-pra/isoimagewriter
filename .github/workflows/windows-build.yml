@@ -39,6 +39,7 @@ jobs:
           cmake -DROSA_BRANDING=ON ../
 
       - name: Build
-    	run: |
+        run: |
           cd build
           make
+
